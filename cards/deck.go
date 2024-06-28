@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strings"
+)
 
 // Define a new type 'deck' which is a slice of strings
 type deck []string
@@ -10,6 +14,10 @@ func (cards deck) print() {
     for i, card := range cards {
         fmt.Println(i, card)
     }
+}
+
+func (deck deck) toString() string {
+	return strings.Join([]string(deck), ",")
 }
 
 // Function 'newDeck' that creates a new deck of cards
@@ -23,4 +31,13 @@ func newDeck() deck {
 		}
 	}
 	return cards
+}
+
+func (deck deck) saveToFile(filename string) {
+		err := os.WriteFile(filename, []byte(deck.toString()), 0666)
+
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 }

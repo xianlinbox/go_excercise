@@ -17,3 +17,6 @@ func TestNewDeck(t *testing.T) {
 		t.Errorf("Expected deck length of %d, but got %d", expectedLength, len(d))
 	}
 }
+
+func TestSaveToFileAndNewDeckFromFile(t *testing.T) {
+}
