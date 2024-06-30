@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type bot interface {
 	getGreeting() string;
@@ -15,6 +18,11 @@ func main() {
 
 	printGreeting(eb)
 	printGreeting(sb)
+
+	fmt.Println(os.Args)
+
+	fileReader := fileReader{}
+	fileReader.readFromFile(os.Args[1])
 }
 
 func printGreeting(b bot) {
