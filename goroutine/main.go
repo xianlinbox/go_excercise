@@ -20,8 +20,12 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for i:=0; i < len(links); i++ {
-		fmt.Println(<-c, "finished checking")
+	// for i:=0; i < len(links); i++ {
+	// 	fmt.Println(<-c, "finished checking")
+	// }
+
+	for l := range c {
+		fmt.Println(l, "finished checking")
 	}
 }
 
