@@ -8,4 +8,10 @@ createdb:
 removedb:
 	docker exec -it simple_bank_pg dropdb simple_bank
 
+migrateup:
+	migrate -path db/migration -database "postgresql://root:admin@localhost:5432/simple_bank?sslmode=disable" -verbose up
+
+migratedown:
+	migrate -path db/migration -database "postgresql://root:admin@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
 .PHONY: startPG createdb removedb
